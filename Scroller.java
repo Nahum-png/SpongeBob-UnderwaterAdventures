@@ -14,17 +14,16 @@ public class Scroller extends Actor
      * 
      */
     public void act(){
-        
+
     }
-    
-    
+
     public void scroll()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-         if(getX()< -getImage().getWidth()/2){
-             setLocation(getX() + getWorld().getWidth()*2, getY());
-            }
-            
-            setLocation (getX()-5,getY());
+        if(getX()< -getImage().getWidth()/2){
+            setLocation(getX() + getWorld().getWidth()*2, getY());
+        }
+
+        setLocation (getX()-5,getY());
     }
 }

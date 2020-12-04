@@ -16,10 +16,10 @@ public class Back extends Button
     {
         // Add your action code here.
         if(Greenfoot.mouseClicked(this)){
-             Start start = new Start();
-           
-           Greenfoot.setWorld(start);
+            Start start = new Start();
+
+            Greenfoot.setWorld(start);
         }
-        
+
     }    
 }

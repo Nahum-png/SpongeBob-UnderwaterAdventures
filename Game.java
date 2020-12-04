@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Game extends World
 {
-        private Background img, img2;
+    private Background scrollerLeft, scrollerRight;
     /**
      * Constructor for objects of class Game.
      * 
@@ -16,21 +16,21 @@ public class Game extends World
     public Game()
     {     // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(989, 520, 1, false);
-        
-        img = new Background();
-        addObject(img, getWidth()/2, getHeight()/2);
-        
-        img2 = new Background();
-        addObject(img2,getWidth() + getWidth()/2, getHeight()/2);
-        
+
+        scrollerLeft = new Background();
+        addObject(scrollerLeft, getWidth()/2, getHeight()/2);
+
+        scrollerRight = new Background();
+        addObject(scrollerRight,getWidth() + getWidth()/2, getHeight()/2);
+
     }
-    
-     public void act(){
-     if(Greenfoot.isKeyDown("right")){
-        img.scroll();
-        img2.scroll();
-       
+
+    public void act(){
+        if(Greenfoot.isKeyDown("right")){
+            scrollerLeft.scroll();
+            scrollerRight.scroll();
+
         }
-        
+
     }
 }
