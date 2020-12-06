@@ -14,11 +14,11 @@ public class PlayButton extends Button
      */
     public void act() 
     {
-         if(Greenfoot.mouseClicked(this))
-       {
-           Game game = new Game();
-           
-           Greenfoot.setWorld(game);
-       } 
+        if(Greenfoot.mouseClicked(this))
+        {
+            Game game = new Game();
+
+            Greenfoot.setWorld(game);
+        } 
     }    
 }
