@@ -8,7 +8,10 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Game extends World
 {
+    
+    private int floor= 430;
     private Background scrollerLeft, scrollerRight;
+    private SpongeBob spongeBob;
     /**
      * Constructor for objects of class Game.
      * 
@@ -22,7 +25,12 @@ public class Game extends World
 
         scrollerRight = new Background();
         addObject(scrollerRight,getWidth() + getWidth()/2, getHeight()/2);
-
+        
+        spongeBob = new SpongeBob();
+        addObject(spongeBob,50,floor);
+        
+        
+        back();
     }
 
     public void act(){
@@ -32,5 +40,12 @@ public class Game extends World
 
         }
 
+    }
+    
+     public void back(){
+
+        Back back = new Back();
+        addObject(back,91,92);
+        back.setLocation(900,480);
     }
 }

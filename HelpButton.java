@@ -16,9 +16,9 @@ public class HelpButton extends Button
     {
         // Add your action code here.
         if(Greenfoot.mouseClicked(this)){
-             Help help = new Help();
-           
-           Greenfoot.setWorld(help);
+            Help help = new Help();
+
+            Greenfoot.setWorld(help);
         }
     }    
 }

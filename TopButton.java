@@ -15,5 +15,10 @@ public class TopButton extends Button
     public void act() 
     {
         // Add your action code here.
+        if(Greenfoot.mouseClicked(this)){
+            Records records = new Records();
+
+            Greenfoot.setWorld(records);
+        }
     }    
 }
