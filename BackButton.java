@@ -6,14 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Back extends Button {
+public class BackButton extends Button {
 
     public void act() {
-        // Add your action code here.
         if (Greenfoot.mouseClicked(this)) {
-            Start start = new Start();
+            StartWorld startWorld = new StartWorld();
 
-            Greenfoot.setWorld(start);
+            Greenfoot.setWorld(startWorld);
         }
 
     }

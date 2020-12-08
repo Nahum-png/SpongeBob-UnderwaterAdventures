@@ -6,11 +6,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Start extends World {
+public class StartWorld extends World {
 
-
-    public Start() {
-
+    public StartWorld() {
         super(900, 600, 1);
         prepare();
     }
@@ -31,7 +29,6 @@ public class Start extends World {
         TopButton topButton = new TopButton();
         addObject(topButton, 91, 92);
         topButton.setLocation(460, 450);
-
 
     }
 }

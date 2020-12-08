@@ -6,13 +6,10 @@
  */
 public class Map {
 
-    public Start loadMap() {
-        Start start = new Start();
+    public StartWorld loadMap() {
+        StartWorld startWorld = new StartWorld();
 
-
-        return start;
-
+        return startWorld;
     }
-
 
 }

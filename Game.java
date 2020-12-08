@@ -27,8 +27,7 @@ public class Game extends World {
         spongeBob = new SpongeBob();
         addObject(spongeBob, 50, floor);
 
-
-        backButton();
+        addBackButton();
     }
 
     public void act() {
@@ -40,9 +39,9 @@ public class Game extends World {
 
     }
 
-    public void backButton() {
+    private void addBackButton() {
 
-        Back back = new Back();
+        BackButton back = new BackButton();
         addObject(back, 91, 92);
         back.setLocation(900, 480);
     }

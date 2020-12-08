@@ -6,19 +6,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Help extends World {
+public class HelpScreen extends World {
 
-
-    public Help() {
+    public HelpScreen() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1);
 
-        back();
+        addBackButton();
     }
 
-    public void back() {
+    private void addBackButton() {
 
-        Back back = new Back();
+        BackButton back = new BackButton();
         addObject(back, 91, 92);
         back.setLocation(550, 350);
     }

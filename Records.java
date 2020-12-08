@@ -27,7 +27,7 @@ public class Records extends World {
         super(600, 400, 1);
 
         showRecords();
-        back();
+        addBackButton();
     }
 
     public void showRecords() {
@@ -36,15 +36,15 @@ public class Records extends World {
         List<Player> players = new ArrayList<>();
         Player player = null;
         int count = 0;
-        try (FileReader f = new FileReader(RECORDS_FILE_NAME)) {
-            BufferedReader br = new BufferedReader(f);
-            while ((linea = br.readLine()) != null) {
+        try (FileReader recordsFile = new FileReader(RECORDS_FILE_NAME);
+        BufferedReader bufferedReader = new BufferedReader(recordsFile)) {
+
+            while ((linea = bufferedReader.readLine()) != null) {
                 datos = linea.split(" ");
                 player = new Player(datos[INDEX_NAME], Integer.parseInt(datos[INDEX_POINTS]));
                 players.add(player);
                 count++;
             }
-            br.close();
 
             Collections.sort(players);
         } catch (IOException e) {
@@ -72,9 +72,8 @@ public class Records extends World {
 
     public void registerRecords(Player player) {
 
-        try (FileWriter file = new FileWriter(RECORDS_FILE_NAME)) {
-
-            PrintWriter pw = new PrintWriter(file);
+        try (FileWriter file = new FileWriter(RECORDS_FILE_NAME);
+        PrintWriter pw = new PrintWriter(file)) {
 
             for (int i = 0; i < 5; i++)
                 pw.println("Name: " + player.getName() + " " + "Score: " + player.getPoints());
@@ -85,9 +84,8 @@ public class Records extends World {
 
     }
 
-
-    public void back() {
-        Back back = new Back();
+    private void addBackButton() {
+        BackButton back = new BackButton();
         addObject(back, 91, 92);
         back.setLocation(550, 350);
     }
