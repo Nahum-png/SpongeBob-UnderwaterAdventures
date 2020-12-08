@@ -1,11 +1,10 @@
 /**
  * Write a description of class Player here.
- * 
- * @author (your name) 
+ *
+ * @author (your name)
  * @version (a version number or a date)
  */
-public class Player implements Comparable<Player>
-{
+public class Player implements Comparable<Player> {
     // instance variables - replace the example below with your own
     private String name;
     private int lives;
@@ -18,25 +17,28 @@ public class Player implements Comparable<Player>
 
     /**
      * An example of a method - replace this comment with your own
-     * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
+     *
+     * @param y a sample parameter for a method
+     * @return the sum of x and y
      */
     public Player(String name, int lives, int points, int gas) {
-        
+
         this.name = name;
         this.lives = lives;
         this.points = points;
         this.gas = gas;
     }
-    public Player(String name, int points){
-    this.points = points;
-    this.name = name;
-}
-        @Override
-public int compareTo(Player player) {
-    return   player.points - points;
-}
+
+    public Player(String name, int points) {
+        this.points = points;
+        this.name = name;
+    }
+
+    @Override
+    public int compareTo(Player player) {
+        return player.points - points;
+    }
+
     public void setName(String name) {
         this.name = name;
     }
@@ -69,5 +71,5 @@ public int compareTo(Player player) {
         return gas;
     }
 
-   
+
 }
