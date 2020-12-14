@@ -10,7 +10,7 @@ public class Game extends World {
 
     private static final int FLOOR = 430;
     private Background scrollerLeft, scrollerRight;
-
+    private Actor actor;
     /**
      * Constructor for objects of class Game.
      */
@@ -25,18 +25,22 @@ public class Game extends World {
 
         switch(selection){
             case 1: SpongeBob spongebob = new SpongeBob();
-            addObject(spongebob,150, FLOOR);
+            actor = spongebob; 
             break;
+
             case 2: Gary gary = new Gary();
-            addObject(gary, 150, FLOOR);
+            actor = gary;
             break;
+
             case 3: Patrick patrick = new Patrick();
-            addObject(patrick, 150, FLOOR);
+            actor = patrick;
             break;
+
             case 4: Plankton plankton = new Plankton();
-            addObject(plankton, 150, FLOOR);
+            actor = plankton;
             break;
         }
+        addObject(actor,150, FLOOR);
         addBackButton();
     }
 

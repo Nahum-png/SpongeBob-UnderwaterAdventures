@@ -18,6 +18,7 @@ public class Vehicle extends Actor {
 
     public void act() {
     }
+
     void jump(){
         onGround = false;
         DOWN = -15;

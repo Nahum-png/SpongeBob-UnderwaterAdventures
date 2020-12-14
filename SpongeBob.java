@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class SpongeBob extends Vehicle {
+public class SpongeBob extends Delay {
 
     private static final int ITERATIONS_TO_CHANGE_SPRITE = 15;
     private static final int MAX_NUMBER_SPRITES = 11;
     private static final int FLOOR = 430;
     private static final int TOP = 400;
     private static final int CHARACTER = 1; 
-    
+
     public SpongeBob() {
         sprites = new GreenfootImage[MAX_NUMBER_SPRITES];
         sprites[0] = new GreenfootImage("Images/Bob/Bob(1).png");
@@ -29,12 +29,9 @@ public class SpongeBob extends Vehicle {
         sprites[10] = new GreenfootImage("Images/Bob/Bob(11).png");
     }
 
-    /**
-     * Act - do whatever the SpongeBob wants to do. This method is called whenever
-     * the 'Act' or 'Run' button gets pressed in the environment.
-     */
-    public void act() {
-        // Add your action code here.
+    @Override
+    void delaySprites() {
+
         if (delaySprite >= ITERATIONS_TO_CHANGE_SPRITE) {
             currentSprite = (++currentSprite) % sprites.length;
             setImage(sprites[currentSprite]);
@@ -43,12 +40,11 @@ public class SpongeBob extends Vehicle {
         }
 
         delaySprite++;
-        
-        if(startGame == false){
-          clickedMouse(CHARACTER);
-        }
-        
+    }
 
+    public void act() {
+        delaySprites();
+        clickedMouse(CHARACTER);
         checkKeys();
         checkFall();
 

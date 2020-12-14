@@ -6,14 +6,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Plankton extends Vehicle
+public class Plankton extends Delay
 {
 
     private static final int ITERATIONS_TO_CHANGE_SPRITE = 15;
     private static final int MAX_NUMBER_SPRITES = 16;
     private static final int CHARACTER = 4; 
-    
-    
+
     public Plankton() {
         sprites = new GreenfootImage[MAX_NUMBER_SPRITES];
         sprites[0] = new GreenfootImage("Images/Plankton/Plankton(1).png");
@@ -34,8 +33,8 @@ public class Plankton extends Vehicle
         sprites[15] = new GreenfootImage("Images/Plankton/Plankton(16).png");
     }
 
-    public void act() 
-    {
+    @Override
+    void delaySprites() {
         if (delaySprite >= ITERATIONS_TO_CHANGE_SPRITE) {
             currentSprite = (++currentSprite) % sprites.length;
             setImage(sprites[currentSprite]);
@@ -44,6 +43,12 @@ public class Plankton extends Vehicle
         }
 
         delaySprite++;
+    }
+
+    public void act()
+    {
+
+        delaySprites();
         clickedMouse(CHARACTER);
         checkKeys();
         checkFall();

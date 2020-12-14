@@ -6,12 +6,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name)
  * @version (a version number or a date)
  */
-public class Gary extends Vehicle {
+public class Gary extends Delay{
 
     private static final int ITERATIONS_TO_CHANGE_SPRITE = 15;
     private static final int MAX_NUMBER_SPRITES = 9;
     private static final int CHARACTER = 2; 
-    
+
     public Gary() {
         sprites = new GreenfootImage[MAX_NUMBER_SPRITES];
         sprites[0] = new GreenfootImage("Images/Gary/Gary(1).png");
@@ -25,7 +25,8 @@ public class Gary extends Vehicle {
         sprites[8] = new GreenfootImage("Images/Gary/Gary(9).png");
     }
 
-    public void act() {
+    @Override
+    void delaySprites() {
         if (delaySprite >= ITERATIONS_TO_CHANGE_SPRITE) {
             currentSprite = (++currentSprite) % sprites.length;
             setImage(sprites[currentSprite]);
@@ -34,9 +35,11 @@ public class Gary extends Vehicle {
         }
 
         delaySprite++;
-        if(startGame == false){
-          clickedMouse(CHARACTER);
-        }
+    }
+
+    public void act() {
+        delaySprites();
+        clickedMouse(CHARACTER);
         checkKeys();
         checkFall();
     }
