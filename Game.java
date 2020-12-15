@@ -16,7 +16,7 @@ public class Game extends World {
     private int timeItems = 0;
     private int respawn = 300;
 
-    public Game() {     // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    public Game(int selection) {     // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(989, 520, 1, false);
         spongeBob = new SpongeBob();
         obstacles = new LinkedList<>();
@@ -29,7 +29,7 @@ public class Game extends World {
         addObject(scrollerLeft, getWidth() / 2, getHeight() / 2);
         addObject(scrollerRight, getWidth() + getWidth() / 2, getHeight() / 2);
 
-        addObject(spongeBob, 50, FLOOR);
+        
 
         addObject(new Timer(),0,0);
        // addBackButton();
@@ -51,7 +51,7 @@ public class Game extends World {
             break;
         }
         addObject(actor,150, FLOOR);
-        addBackButton();
+        
     }
 
     public void act() {

@@ -6,3 +6,6 @@ Michas,10
 LECHON,15
 LECHON,25
 LECHON,0
+alain,10
+alain,20
+kaleb,30
