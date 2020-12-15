@@ -8,7 +8,22 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Gary extends Vehicle {
 
-    public void act() {
-        // Add your action code here.
+    private static final int CHARACTER = 2; 
+
+    public Gary() {
+        addSprite(new GreenfootImage("Images/Gary/Gary(1).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(2).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(3).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(4).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(5).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(6).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(7).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(8).png"));
+        addSprite(new GreenfootImage("Images/Gary/Gary(9).png"));
+
+    }
+
+    public int getCharacterId(){
+        return CHARACTER;
     }
 }

@@ -9,9 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class PlayButton extends Button {
     public void act() {
         if (Greenfoot.mouseClicked(this)) {
-            Game game = new Game();
+            SelectPlayer selectPlayer = new SelectPlayer();
 
-            Greenfoot.setWorld(game);
+            Greenfoot.setWorld(selectPlayer);
         }
     }
 }
