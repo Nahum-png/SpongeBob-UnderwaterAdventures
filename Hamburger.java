@@ -1,14 +1,19 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class Hamburger here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class Hamburger extends Item {
 
+    private GreenfootImage sprite;
+    public final static int POINTS_HAMBURGER = 5;
+    
+    public Hamburger(){
+        sprite = new GreenfootImage("images/burger.png");
+        sprite.scale(50,50);
+        
+        
+    }
+
     public void act() {
-        // Add your action code here.
+        setImage(sprite);
+        scroll();
     }
 }

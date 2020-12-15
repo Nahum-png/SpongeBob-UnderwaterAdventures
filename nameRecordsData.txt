@@ -1,0 +1,8 @@
+edilberto,25
+Julio,10
+Alain,30
+Uriel,0
+Michas,10
+LECHON,15
+LECHON,25
+LECHON,0

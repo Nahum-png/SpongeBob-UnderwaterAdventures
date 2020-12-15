@@ -10,6 +10,7 @@ public class Player implements Comparable<Player> {
     private int lives;
     private int points;
     private int gas;
+    private int time;
 
     /**
      * Constructor for objects of class Player
@@ -32,6 +33,12 @@ public class Player implements Comparable<Player> {
     public Player(String name, int points) {
         this.points = points;
         this.name = name;
+    }
+    
+     public Player(String name, int points, int time) {
+        this.points = points;
+        this.name = name;
+        this.time = time;
     }
 
     @Override

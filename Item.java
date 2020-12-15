@@ -11,4 +11,7 @@ public class Item extends Actor {
     public void act() {
         // Add your action code here.
     }
+      public void scroll(){
+        setLocation(getX() - 5, getY());
+    }
 }

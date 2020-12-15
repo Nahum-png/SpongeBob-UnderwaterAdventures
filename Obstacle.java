@@ -8,7 +8,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Obstacle extends Actor {
 
-    public void act() {
+    public Obstacle(){
 
+    }
+
+    public void scroll(){
+        setLocation(getX() - 5, getY());
     }
 }
