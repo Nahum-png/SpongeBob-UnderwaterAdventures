@@ -19,14 +19,14 @@ public class Records extends World {
     private static final int INDEX_NAME = 0;
     private static final int INDEX_POINTS = 1;
     private static final String RECORDS_FILE_NAME = "nameRecordsData.txt";
-
+    File file = new File(RECORDS_FILE_NAME);
     /**
      * Constructor for objects of class Records2.
      */
     public Records() {
         super(600, 400, 1);
-        
-        
+
+        checkFile();
         showRecords();
         addBackButton();
     }
@@ -71,7 +71,16 @@ public class Records extends World {
 
     }
 
- 
+
+    public void checkFile(){
+        if(!file.exists()){
+            try{
+                file.createNewFile();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
 
     private void addBackButton() {
         BackButton back = new BackButton();
