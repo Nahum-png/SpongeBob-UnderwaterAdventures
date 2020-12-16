@@ -1,9 +1,8 @@
+
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.*;
 
-
 public class Game extends World {
-
     private static final int FLOOR = 430;
     private Background scrollerLeft, scrollerRight;
     private Actor actor;
@@ -16,7 +15,13 @@ public class Game extends World {
     private int timeItems = 0;
     private int respawn = 300;
 
-    public Game(int selection) {     // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+    private static final int  MINUTES = 0;
+    private static final int  SECONDS = 0;
+    public  static final int  TIME_ELAPSED = 0;
+
+  
+
+    public Game(int selection) {     
         super(989, 520, 1, false);
         spongeBob = new SpongeBob();
         obstacles = new LinkedList<>();
@@ -29,10 +34,8 @@ public class Game extends World {
         addObject(scrollerLeft, getWidth() / 2, getHeight() / 2);
         addObject(scrollerRight, getWidth() + getWidth() / 2, getHeight() / 2);
 
-        
-
-        addObject(new Timer(),0,0);
-       // addBackButton();
+        addObject(new Timer(MINUTES, SECONDS, TIME_ELAPSED),0,0);
+        // addBackButton();
         switch(selection){
             case 1: actor = new SpongeBob();
 
@@ -50,8 +53,10 @@ public class Game extends World {
 
             break;
         }
-        addObject(actor,150, FLOOR);
         
+        addObject(actor,150, FLOOR);
+
+        Greenfoot.playSound("sounds/Soundtrack.mp3");
     }
 
     public void act() {
@@ -62,6 +67,8 @@ public class Game extends World {
         deleteObstacles();
         drawItems();
         deleteItems();
+        pauseAndResume();
+
     }
 
     public void drawObstacles(){
@@ -87,6 +94,7 @@ public class Game extends World {
     public void deleteObstacles(){
         if(obstacles.size()> 0){
             if(timeObstacle > respawn){
+                respawn-=5;
                 obstacles.removeFirst();
                 timeObstacle = 0;
             }
@@ -97,6 +105,7 @@ public class Game extends World {
     public void deleteItems(){
         if(items.size()> 0){
             if(timeItems > respawn){
+                respawn-=5;
                 items.removeFirst();
                 timeItems = 0;
             }
@@ -104,8 +113,14 @@ public class Game extends World {
         }
     }
 
-    /*private void addBackButton() {
-        addObject(new BackButton(), 91, 92);
-        back.setLocation(900, 480);
-    }*/
+    public void pauseAndResume(){
+        if (Greenfoot.isKeyDown("p"))      
+        { 
+            while (!Greenfoot.isKeyDown("enter"))
+            {
+                Greenfoot.delay(1);
+            }
+        }
+    }
 }
+

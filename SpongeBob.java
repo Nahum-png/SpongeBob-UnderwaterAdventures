@@ -1,11 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 public class SpongeBob extends Vehicle {
-
-    private static final int FLOOR = 430;
-    private static final int TOP = 400;
     private static final int CHARACTER = 1;
-    public static int points;
 
     public SpongeBob() {
         addSprite(new GreenfootImage("Images/Bob/Bob(1).png"));
@@ -25,34 +21,9 @@ public class SpongeBob extends Vehicle {
         return CHARACTER;
     }
 
-
     public void act(){
         super.act();
-        checkCollision();
-        checkItem();
-    }
-    public void checkCollision(){
 
-        Obstacle obstacle= null;
-
-        obstacle= (Obstacle)getOneObjectAtOffset(+20, +20, Obstacle.class);
-        if(obstacle != null){
-
-            Greenfoot.setWorld(new GameOver());
-        }
-
-
-    }
-
-    public void checkItem(){
-        getWorld().showText(" Points: "+ points, 850,30);
-        if(isTouching(Item.class)){
-
-            removeTouching(Item.class);
-            points+= Hamburger.POINTS_HAMBURGER;
-
-        }
     }
 
 }
-

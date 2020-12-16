@@ -20,9 +20,11 @@ public abstract class Vehicle extends Actor {
     boolean onGround = true;
     private static final int ACELERATION = 1;
     protected boolean startGame = false;
+    public static int points;
 
     public Vehicle(){
         sprites = new ArrayList();
+        points =0;
     }
 
     public void act() {
@@ -30,6 +32,8 @@ public abstract class Vehicle extends Actor {
         clickedMouse(getCharacterId());
         checkKeys();
         checkFall();
+        checkCollision();
+        checkItem();
     }
 
     public abstract int getCharacterId();
@@ -75,9 +79,10 @@ public abstract class Vehicle extends Actor {
 
     public void checkKeys(){
         if(Greenfoot.isKeyDown("space")){
-            if(onGround)
+            if(onGround){
                 jump();
-
+                Greenfoot.playSound("sounds/Jump.mp3");
+            }
         }
     }
 
@@ -89,4 +94,26 @@ public abstract class Vehicle extends Actor {
         }
     }
 
+    public void checkCollision(){
+
+        Obstacle obstacle= null;
+
+        obstacle= (Obstacle)getOneObjectAtOffset(+20, +20, Obstacle.class);
+        if(obstacle != null){
+
+            Greenfoot.playSound("sounds/Death.mp3");
+            Greenfoot.delay(20);
+            Greenfoot.setWorld(new GameOver());
+        }
+
+    }
+    public void checkItem(){
+        getWorld().showText(" Points: "+ points, 850,30);
+        if(isTouching(Item.class)){
+
+            removeTouching(Item.class);
+            points+= Hamburger.POINTS_HAMBURGER;
+
+        }
+    }
 }
