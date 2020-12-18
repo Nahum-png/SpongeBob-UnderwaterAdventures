@@ -28,28 +28,29 @@ public class GameOver extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1, true); 
-        
+
         String name = writeOnScreen();
         player = registerPlayer(name, SpongeBob.points);
         registerRecords(player);
     }
+
     public String writeOnScreen(){
-       String name = Greenfoot.ask("Name :");
-       return name;
+        String name = Greenfoot.ask("Name :");
+        return name;
     }
-    
+
     public static Player registerPlayer(String name, int points){
         Player player = new Player(name, points);
-        
+
         return player;
     } 
 
     public static void registerRecords(Player player) {
 
         try (FileWriter file = new FileWriter(RECORDS_FILE_NAME,true);
-        PrintWriter pw = new PrintWriter(file)) {
+        PrintWriter pw = new PrintWriter(file)){
 
-                pw.println(player.getName()+","+ player.getPoints());
+            pw.println(player.getName()+","+ player.getPoints());
 
         } catch (Exception e) {
             e.printStackTrace();

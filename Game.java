@@ -9,33 +9,40 @@ public class Game extends World {
     private SpongeBob spongeBob;
     private LinkedList<Obstacle> obstacles;
     private LinkedList<Item> items;
+    private LinkedList<Platform> platforms;
+    private LinkedList<Platform> highPlatforms;
+    private LinkedList<Soda> sodas;
     private int obstaclesLimit;
     private int itemLimit;
+    private int platformsLimit;
+    private int highPlatformsLimit;
+    private int sodasLimit;
     private int timeObstacle = 0;
     private int timeItems = 0;
-    private int respawn = 300;
-
-    private static final int  MINUTES = 0;
-    private static final int  SECONDS = 0;
-    public  static final int  TIME_ELAPSED = 0;
-
-  
+    private int timePlaforms =0;
+    private int respawn = 160;
 
     public Game(int selection) {     
         super(989, 520, 1, false);
         spongeBob = new SpongeBob();
         obstacles = new LinkedList<>();
         items = new LinkedList<>();
+        platforms = new LinkedList<>();
+        highPlatforms = new LinkedList<>();
+        sodas = new LinkedList<>();
         obstaclesLimit = 1;
-        itemLimit = 2;
+        itemLimit = 1;
+        highPlatformsLimit= 2;
+        platformsLimit= 3;
+        sodasLimit= 1;
         scrollerLeft = new Background();
         scrollerRight = new Background();
 
         addObject(scrollerLeft, getWidth() / 2, getHeight() / 2);
         addObject(scrollerRight, getWidth() + getWidth() / 2, getHeight() / 2);
 
-        addObject(new Timer(MINUTES, SECONDS, TIME_ELAPSED),0,0);
-        // addBackButton();
+        addObject(new Timer(),0,0);
+        GreenfootSound music =new GreenfootSound("sounds/Soundtrack.mp3");
         switch(selection){
             case 1: actor = new SpongeBob();
 
@@ -53,10 +60,12 @@ public class Game extends World {
 
             break;
         }
-        
+
         addObject(actor,150, FLOOR);
 
-        Greenfoot.playSound("sounds/Soundtrack.mp3");
+        if(!music.isPlaying()){
+            music.play();
+        }
     }
 
     public void act() {
@@ -65,9 +74,33 @@ public class Game extends World {
         scrollerRight.scroll();
         drawObstacles();
         deleteObstacles();
-        drawItems();
+        drawBurger();
         deleteItems();
+        drawPlatforms();
+        deletePlatforms();
         pauseAndResume();
+        drawSoda();
+        drawHighPlatforms();
+    }
+
+    public void drawPlatforms(){
+        if(platforms.size() < platformsLimit){
+            Selector selector = new Selector();
+            Platform option = selector.selectorPlataforms(Selector.PLATAFORM_SIZE);
+            addObject(option,400+Greenfoot.getRandomNumber(700),FLOOR-100);
+            platforms.add(new Platform());
+
+        }
+    }
+
+    public void drawHighPlatforms(){
+        if(highPlatforms.size() < highPlatformsLimit){
+            Selector selector = new Selector();
+            Platform option2 = selector.selectorPlataforms(Selector.PLATAFORM_SIZE);
+            addObject(option2,400+Greenfoot.getRandomNumber(700),FLOOR-250);
+            highPlatforms.add(new Platform());
+
+        }
 
     }
 
@@ -76,25 +109,38 @@ public class Game extends World {
             Selector selector = new Selector();
             int number = new Random().nextInt(Selector.OBSTACLES_SIZE);
             Obstacle option = selector.selectorObstacles(number);
-            addObject(option,900,FLOOR);
+            addObject(option,800,FLOOR);
             obstacles.add(new Obstacle());
         }
     }
 
-    public void drawItems(){
+    public void drawBurger(){
         if(items.size() < itemLimit){
             Selector selector = new Selector();
             int number = new Random().nextInt(Selector.ITEMS_SIZE);
             Item option = selector.selectorItems(number);
-            addObject(option,900,FLOOR-80);
+            addObject(option,1000+Greenfoot.getRandomNumber(300),FLOOR);
             items.add(new Item());
+        }
+    }
+
+    public void drawSoda(){
+        if(sodas.size() < sodasLimit){
+            Selector selector = new Selector();
+            int number = new Random().nextInt(Selector.ITEMS_SIZE);
+            Item option = selector.selectorItems(number);
+            addObject(option,600+Greenfoot.getRandomNumber(700),FLOOR-300);
+            sodas.add(new Soda());
         }
     }
 
     public void deleteObstacles(){
         if(obstacles.size()> 0){
             if(timeObstacle > respawn){
-                respawn-=5;
+                if(respawn>150){
+                    respawn-=5;
+                }
+
                 obstacles.removeFirst();
                 timeObstacle = 0;
             }
@@ -105,11 +151,22 @@ public class Game extends World {
     public void deleteItems(){
         if(items.size()> 0){
             if(timeItems > respawn){
-                respawn-=5;
                 items.removeFirst();
+                sodas.removeFirst();
                 timeItems = 0;
             }
             timeItems++;
+        }
+    }
+
+    public void deletePlatforms(){
+        if(platforms.size()> 0){
+            if(timePlaforms > respawn){
+                platforms.removeAll(platforms);
+                highPlatforms.removeAll(highPlatforms);
+                timePlaforms = 0;
+            }
+            timePlaforms++;
         }
     }
 

@@ -4,4 +4,6 @@ comment1.params=obstacle
 comment1.target=Obstacle\ selectorObstacles(int)
 comment2.params=item
 comment2.target=Item\ selectorItems(int)
-numComments=3
+comment3.params=option
+comment3.target=Platform\ selectorPlataforms(int)
+numComments=4

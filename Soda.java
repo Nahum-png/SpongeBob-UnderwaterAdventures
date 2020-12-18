@@ -1,18 +1,18 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-public class Hamburger extends Item {
+public class Soda extends Item {
 
     private GreenfootImage sprite;
-    public final static int POINTS_HAMBURGER = 5;
+    public final static int POINTS_SODA = 15;
 
-    public Hamburger(){
-        sprite = new GreenfootImage("images/burger.png");
+    public Soda(){
+        sprite = new GreenfootImage("images/soda.png");
         sprite.scale(50,50);
 
     }
 
     public int getPoints(){
-        return POINTS_HAMBURGER;
+        return POINTS_SODA;
     }
 
     public void act() {

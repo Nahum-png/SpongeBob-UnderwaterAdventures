@@ -1,9 +1,9 @@
 #BlueJ class context
-comment0.target=Item
+comment0.target=Soda
 comment1.params=
-comment1.target=void\ act()
+comment1.target=Soda()
 comment2.params=
 comment2.target=int\ getPoints()
 comment3.params=
-comment3.target=void\ scroll()
+comment3.target=void\ act()
 numComments=4

@@ -1,9 +1,7 @@
 #BlueJ class context
 comment0.target=Timer
-comment1.params=minutes\ seconds\ timeElapsed
-comment1.target=Timer(int,\ int,\ int)
+comment1.params=
+comment1.target=void\ act()
 comment2.params=
-comment2.target=void\ act()
-comment3.params=
-comment3.target=void\ watch()
-numComments=4
+comment2.target=void\ time()
+numComments=3

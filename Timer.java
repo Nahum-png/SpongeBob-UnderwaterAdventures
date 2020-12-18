@@ -1,26 +1,23 @@
 import greenfoot.*;  
+import java.time.LocalDateTime;
+import java.time.*;
+import java.time.temporal.ChronoUnit;
 
 public class Timer extends Actor{
-    private final int SECOND = 60;
-    private final int MINUTE = SECOND*60;
-    private int minutes;
-    private int seconds;
-    public static int timeElapsed;
 
-    public Timer(int minutes, int seconds, int timeElapsed){ 
-        this.minutes = minutes;
-        this.seconds = seconds;
-        this.timeElapsed = timeElapsed;
-    }
+    LocalDateTime startTime = LocalDateTime.now();
 
     public void act() {
-        watch();
+        time();
     }  
 
-    public void watch(){
-        timeElapsed += 1;
-        minutes = timeElapsed/MINUTE;
-        seconds = timeElapsed/SECOND % 60;
-        getWorld().showText("Time:" + minutes +":"+ seconds,850,10);
+    public void time(){
+        LocalDateTime current = LocalDateTime.now(); 
+        long minutes = ChronoUnit.MINUTES.between(startTime,current);
+        long seconds = ChronoUnit.SECONDS.between(startTime,current);
+
+        seconds= seconds %60;
+
+        getWorld().showText("time : "+minutes +" : "+ seconds , 850,10);
     }
 }

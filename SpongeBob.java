@@ -20,10 +20,4 @@ public class SpongeBob extends Vehicle {
     public int getCharacterId(){
         return CHARACTER;
     }
-
-    public void act(){
-        super.act();
-
-    }
-
 }
