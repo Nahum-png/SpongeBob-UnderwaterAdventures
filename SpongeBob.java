@@ -1,16 +1,7 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
-/**
- * Write a description of class SpongeBob here.
- *
- * @author (your name)
- * @version (a version number or a date)
- */
 public class SpongeBob extends Vehicle {
-
-    private static final int FLOOR = 430;
-    private static final int TOP = 400;
-    private static final int CHARACTER = 1; 
+    private static final int CHARACTER = 1;
 
     public SpongeBob() {
         addSprite(new GreenfootImage("Images/Bob/Bob(1).png"));
@@ -29,11 +20,4 @@ public class SpongeBob extends Vehicle {
     public int getCharacterId(){
         return CHARACTER;
     }
-
-    
-    public void act(){
-        super.act();
-        
-    }
 }
-

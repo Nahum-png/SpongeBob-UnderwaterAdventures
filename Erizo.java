@@ -8,7 +8,16 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Erizo extends Obstacle {
 
+    private GreenfootImage sprite;
+
+    public Erizo(){
+        sprite = new GreenfootImage("images/erizo.png");
+        sprite.scale(50,50);
+        setImage(sprite);
+    }
+
     public void act() {
-        // Add your action code here.
+        
+        scroll();
     }
 }

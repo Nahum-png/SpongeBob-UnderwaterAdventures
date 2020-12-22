@@ -8,7 +8,15 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Coral extends Obstacle {
 
+    private GreenfootImage sprite;
+
+    public Coral(){
+        sprite = new GreenfootImage("images/coral.png");
+        sprite.scale(50,50);
+        setImage(sprite);
+    }
+    
     public void act() {
-        // Add your action code here.
+        scroll();
     }
 }
