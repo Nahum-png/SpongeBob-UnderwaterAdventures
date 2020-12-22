@@ -13,10 +13,10 @@ public class Coral extends Obstacle {
     public Coral(){
         sprite = new GreenfootImage("images/coral.png");
         sprite.scale(50,50);
+        setImage(sprite);
     }
     
     public void act() {
-        setImage(sprite);
         scroll();
     }
 }

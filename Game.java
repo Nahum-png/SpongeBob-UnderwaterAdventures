@@ -7,11 +7,11 @@ public class Game extends World {
     private Background scrollerLeft, scrollerRight;
     private Actor actor;
     private SpongeBob spongeBob;
-    private LinkedList<Obstacle> obstacles;
-    private LinkedList<Item> items;
-    private LinkedList<Platform> platforms;
-    private LinkedList<Platform> highPlatforms;
-    private LinkedList<Soda> sodas;
+    private int obstaclesCount;
+    private int itemsCount;
+    private int platformsCount;
+    private int highPlatformsCount;
+    private int sodasCount;
     private int obstaclesLimit;
     private int itemLimit;
     private int platformsLimit;
@@ -25,11 +25,11 @@ public class Game extends World {
     public Game(int selection) {     
         super(989, 520, 1, false);
         spongeBob = new SpongeBob();
-        obstacles = new LinkedList<>();
-        items = new LinkedList<>();
-        platforms = new LinkedList<>();
-        highPlatforms = new LinkedList<>();
-        sodas = new LinkedList<>();
+        obstaclesCount = 0;
+        itemsCount = 0;
+        platformsCount = 0;
+        highPlatformsCount = 0;
+        sodasCount = 0;
         obstaclesLimit = 1;
         itemLimit = 1;
         highPlatformsLimit= 2;
@@ -84,64 +84,64 @@ public class Game extends World {
     }
 
     public void drawPlatforms(){
-        if(platforms.size() < platformsLimit){
+        if(platformsCount < platformsLimit){
             Selector selector = new Selector();
             Platform option = selector.selectorPlataforms(Selector.PLATAFORM_SIZE);
             addObject(option,400+Greenfoot.getRandomNumber(700),FLOOR-100);
-            platforms.add(new Platform());
 
+            platformsCount++;
         }
     }
 
     public void drawHighPlatforms(){
-        if(highPlatforms.size() < highPlatformsLimit){
+        if(highPlatformsCount < highPlatformsLimit){
             Selector selector = new Selector();
             Platform option2 = selector.selectorPlataforms(Selector.PLATAFORM_SIZE);
             addObject(option2,400+Greenfoot.getRandomNumber(700),FLOOR-250);
-            highPlatforms.add(new Platform());
+            highPlatformsCount++;
 
         }
 
     }
 
     public void drawObstacles(){
-        if(obstacles.size() < obstaclesLimit){
+        if(obstaclesCount < obstaclesLimit){
             Selector selector = new Selector();
             int number = new Random().nextInt(Selector.OBSTACLES_SIZE);
             Obstacle option = selector.selectorObstacles(number);
             addObject(option,800,FLOOR);
-            obstacles.add(new Obstacle());
+            obstaclesCount++;
         }
     }
 
     public void drawBurger(){
-        if(items.size() < itemLimit){
+        if(itemsCount < itemLimit){
             Selector selector = new Selector();
             int number = new Random().nextInt(Selector.ITEMS_SIZE);
             Item option = selector.selectorItems(number);
             addObject(option,1000+Greenfoot.getRandomNumber(300),FLOOR);
-            items.add(new Item());
+            itemsCount++;
         }
     }
 
     public void drawSoda(){
-        if(sodas.size() < sodasLimit){
+        if(sodasCount < sodasLimit){
             Selector selector = new Selector();
             int number = new Random().nextInt(Selector.ITEMS_SIZE);
             Item option = selector.selectorItems(number);
             addObject(option,600+Greenfoot.getRandomNumber(700),FLOOR-300);
-            sodas.add(new Soda());
+            sodasCount++;
         }
     }
 
     public void deleteObstacles(){
-        if(obstacles.size()> 0){
+        if(obstaclesCount> 0){
             if(timeObstacle > respawn){
                 if(respawn>150){
                     respawn-=5;
                 }
 
-                obstacles.removeFirst();
+                obstaclesCount--;
                 timeObstacle = 0;
             }
             timeObstacle++;
@@ -149,10 +149,10 @@ public class Game extends World {
     }
 
     public void deleteItems(){
-        if(items.size()> 0){
+        if(itemsCount> 0){
             if(timeItems > respawn){
-                items.removeFirst();
-                sodas.removeFirst();
+                itemsCount--;
+                sodasCount--;
                 timeItems = 0;
             }
             timeItems++;
@@ -160,10 +160,10 @@ public class Game extends World {
     }
 
     public void deletePlatforms(){
-        if(platforms.size()> 0){
+        if(platformsCount> 0){
             if(timePlaforms > respawn){
-                platforms.removeAll(platforms);
-                highPlatforms.removeAll(highPlatforms);
+                platformsCount=0;
+                highPlatformsCount=0;
                 timePlaforms = 0;
             }
             timePlaforms++;

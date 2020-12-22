@@ -8,7 +8,7 @@ public class Hamburger extends Item {
     public Hamburger(){
         sprite = new GreenfootImage("images/burger.png");
         sprite.scale(50,50);
-
+        setImage(sprite);
     }
 
     public int getPoints(){
@@ -16,7 +16,6 @@ public class Hamburger extends Item {
     }
 
     public void act() {
-        setImage(sprite);
         scroll();
     }
 }

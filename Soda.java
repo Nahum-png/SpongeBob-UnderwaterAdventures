@@ -8,7 +8,7 @@ public class Soda extends Item {
     public Soda(){
         sprite = new GreenfootImage("images/soda.png");
         sprite.scale(50,50);
-
+        setImage(sprite);
     }
 
     public int getPoints(){
@@ -16,7 +16,6 @@ public class Soda extends Item {
     }
 
     public void act() {
-        setImage(sprite);
         scroll();
     }
 }

@@ -12,11 +12,12 @@ public class Platform extends Actor
     
     public Platform(){
         sprite = new GreenfootImage("images/platform.png");
-        sprite.scale(90,50);
+        sprite.scale(90,50); 
+        setImage(sprite);
     }
     public void act() 
     {
-        setImage(sprite);
+       
         scroll();
     } 
     

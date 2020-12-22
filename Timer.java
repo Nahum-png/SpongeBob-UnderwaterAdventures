@@ -18,6 +18,6 @@ public class Timer extends Actor{
 
         seconds= seconds %60;
 
-        getWorld().showText("time : "+minutes +" : "+ seconds , 850,10);
+        getWorld().showText("Time : "+minutes +" : "+ seconds , 850,10);
     }
 }
